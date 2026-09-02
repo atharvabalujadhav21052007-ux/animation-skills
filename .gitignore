@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# Render outputs & video artifacts
+*.mp4
+*.m4a
+*.wav
+*.avi
+*.mov
+test_stills/
+projects/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
