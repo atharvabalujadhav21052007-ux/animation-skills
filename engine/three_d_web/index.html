@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>What If the Moon Disappeared - 3D Vertical Reel</title>
+  <style>
+    @font-face {
+      font-family: 'Cap';
+      src: url('node_modules/@fontsource/montserrat/files/montserrat-latin-700-normal.woff2') format('woff2');
+      font-weight: 700;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+
+    #stage {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+      width: 1080px !important;
+      height: 1920px !important;
+    }
+
+    #cap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 1440px;
+      text-align: center;
+      font: 700 70px/1.22 'Cap', 'Montserrat', sans-serif;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      text-shadow: 0 4px 22px rgba(0, 0, 0, 0.95), 0 2px 6px rgba(0, 0, 0, 0.98);
+      padding: 0 54px;
+      box-sizing: border-box;
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .hl {
+      color: #ffd214;
+      text-shadow: 0 0 28px rgba(255, 210, 20, 0.8), 0 3px 8px rgba(0, 0, 0, 0.95);
+    }
+
+    #fade {
+      position: absolute;
+      inset: 0;
+      background: #000;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    #hud {
+      position: fixed;
+      left: 1100px;
+      top: 10px;
+      color: #aaa;
+      font: 14px monospace;
+      z-index: 30;
+    }
+  </style>
+  <script type="importmap">
+{ "imports": {
+  "three": "./node_modules/three/build/three.module.js",
+  "three/addons/": "./node_modules/three/examples/jsm/"
+} }
+</script>
+  <script src="../projects/01_moon_disappeared/words.js"></script>
+</head>
+
+<body>
+  <div id="stage">
+    <div id="fade"></div>
+    <div id="cap"></div>
+  </div>
+  <div id="hud"></div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
