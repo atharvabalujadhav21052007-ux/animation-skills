@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Notion Motion Video Reel</title>
+<style>
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 600 700;
+  src: url('fonts/Poppins-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lora';
+  font-weight: 400 600 700;
+  src: url('fonts/Lora-Variable.ttf') format('truetype');
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #f7f6f3;
+  --card-bg: #ffffff;
+  --text-primary: #37352f;
+  --text-muted: #787774;
+  --border: rgba(55, 53, 47, 0.12);
+  --shadow: 0 4px 18px rgba(15, 15, 15, 0.06), 0 1px 3px rgba(15, 15, 15, 0.04);
+  --yellow-bg: #fef9c3;
+  --yellow-text: #854d0e;
+  --blue-bg: #dbeafe;
+  --blue-text: #1e40af;
+  --green-bg: #dcfce7;
+  --green-text: #166534;
+  --red-bg: #fee2e2;
+  --red-text: #991b1b;
+  --purple-bg: #f3e8ff;
+  --purple-text: #6b21a8;
+  --highlight: #fde047;
+}
+
+body {
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  position: relative;
+  width: 1080px;
+  height: 1920px;
+  background: var(--bg);
+  overflow: hidden;
+  padding: 110px 80px 140px 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Subtle Notion Paper Texture overlay */
+#paper-texture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: radial-gradient(#000 1px, transparent 1px);
+  background-size: 16px 16px;
+  z-index: 100;
+}
+
+/* Top Notion Navbar */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  border-bottom: 1.5px solid var(--border);
+  margin-bottom: 50px;
+}
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 32px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.breadcrumbs .crumb-active {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.nav-btn {
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 26px;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border);
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Main Workspace Header */
+.page-icon {
+  font-size: 96px;
+  margin-bottom: 24px;
+  line-height: 1;
+}
+.page-title {
+  font-family: 'Lora', serif;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 40px;
+  letter-spacing: -0.02em;
+  min-height: 160px;
+}
+.typing-cursor {
+  display: inline-block;
+  width: 4px;
+  height: 64px;
+  background: #2563eb;
+  margin-left: 6px;
+  vertical-align: middle;
+  animation: blink 0.8s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Stage Container for Dynamic Blocks */
+#stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* Notion UI Components */
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  padding: 34px 40px;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+.callout-icon {
+  font-size: 52px;
+  line-height: 1;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(55, 53, 47, 0.04);
+}
+.callout-content {
+  flex: 1;
+}
+.callout-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.callout-text {
+  font-size: 30px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+/* Checklist items */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 32px;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  font-size: 34px;
+  font-weight: 500;
+}
+.checkbox {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 2.5px solid #a8a29e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+.checkbox.checked {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+.checkbox svg {
+  width: 26px;
+  height: 26px;
+  stroke: #ffffff;
+  stroke-width: 3.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.todo-text.checked {
+  text-decoration: line-through;
+  color: var(--text-muted);
+  opacity: 0.65;
+}
+
+/* Pill Badges */
+.badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-left: auto;
+}
+.badge-red { background: var(--red-bg); color: var(--red-text); }
+.badge-yellow { background: var(--yellow-bg); color: var(--yellow-text); }
+.badge-green { background: var(--green-bg); color: var(--green-text); }
+.badge-blue { background: var(--blue-bg); color: var(--blue-text); }
+.badge-purple { background: var(--purple-bg); color: var(--purple-text); }
+
+/* Progress Bar */
+.progress-container {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 32px 40px;
+  box-shadow: var(--shadow);
+}
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.progress-track {
+  width: 100%;
+  height: 24px;
+  background: #e7e5e4;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2563eb, #38bdf8);
+  border-radius: 12px;
+}
+
+/* Notion Avatar Section */
+.avatar-card {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  padding: 32px 40px;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+.avatar-graphic {
+  width: 220px;
+  height: 220px;
+  flex-shrink: 0;
+}
+.avatar-speech {
+  flex: 1;
+  font-family: 'Lora', serif;
+  font-size: 34px;
+  line-height: 1.4;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Floating Mouse Cursor */
+#cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 48px;
+  pointer-events: none;
+  z-index: 200;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.25));
+}
+.click-ripple {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.25);
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+  z-index: 199;
+}
+
+/* Kinetic Bottom Captions */
+#caption-bar {
+  position: absolute;
+  bottom: 80px;
+  left: 80px;
+  right: 80px;
+  background: #ffffff;
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  padding: 32px 40px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.09);
+  text-align: center;
+  z-index: 150;
+}
+#caption-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+.hl {
+  background: var(--highlight);
+  padding: 2px 10px;
+  border-radius: 8px;
+}
+</style>
+<script src="vendor/gsap.min.js"></script>
+</head>
+<body>
+<div id="paper-texture"></div>
+
+<div id="root">
+  <!-- Top Navigation -->
+  <div class="nav-bar">
+    <div class="breadcrumbs">
+      <span>⚡ Workspace</span>
+      <span>/</span>
+      <span class="crumb-active" id="bread-topic">What If Series</span>
+    </div>
+    <div class="nav-actions">
+      <div class="nav-btn"><span>★</span> Favorite</div>
+      <div class="nav-btn">Share</div>
+    </div>
+  </div>
+
+  <!-- Page Header -->
+  <div class="page-icon" id="page-icon">🌍</div>
+  <h1 class="page-title"><span id="title-text"></span><span class="typing-cursor"></span></h1>
+
+  <!-- Interactive Stage -->
+  <div id="stage">
+    <!-- Dynamic blocks rendered via shots -->
+  </div>
+
+  <!-- Floating Cursor -->
+  <svg id="cursor" viewBox="0 0 24 24" fill="none">
+    <path d="M4 3L11.5 21L14.5 13.5L22 10.5L4 3Z" fill="#1e293b" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
+  </svg>
+  <div class="click-ripple" id="ripple"></div>
+
+  <!-- Bottom Captions -->
+  <div id="caption-bar">
+    <div id="caption-text">WHAT IF THE MOON DISAPPEARED?</div>
+  </div>
+</div>
+
+<script src="words.js"></script>
+<script src="shots.js"></script>
+<script src="notion_avatar.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
+
