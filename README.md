@@ -2,14 +2,34 @@
 
 > Studio-grade procedural animation skills, 3D WebGL explainer rendering, kinetic typography, and vertical short-form video generation for AI coding agents (Antigravity, Claude, Cursor).
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Format: 9:16](https://img.shields.io/badge/Format-9%3A16%20Vertical-blueviolet)](#)
-[![Resolution: 1080x1920](https://img.shields.io/badge/Resolution-1080x1920%20FHD-green)](#)
-[![Audio: -14 LUFS](https://img.shields.io/badge/Audio-Broadcast%20--14%20LUFS-orange)](#)
+<p align="center">
+  <img src="docs/images/3d_moon_hook.jpg" width="22%" alt="3D Explainer Hook" />
+  <img src="docs/images/3d_earth_wobble.jpg" width="22%" alt="Wobbling Earth & HUD" />
+  <img src="docs/images/3d_clock_spin.jpg" width="22%" alt="High Speed Spin & Clock" />
+  <img src="docs/images/3d_nocturnal_void.jpg" width="22%" alt="Flashlight & Nocturnal Animals" />
+</p>
+
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Format-9%3A16%20Vertical-blueviolet" alt="Format: 9:16 Vertical" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Resolution-1080x1920%20FHD-green" alt="Resolution: 1080x1920" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Audio-Broadcast%20--14%20LUFS-orange" alt="Audio: -14 LUFS" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Framerate-30fps%20CFR-red" alt="30fps CFR" /></a>
+</p>
 
 ---
 
-## 🚀 Features
+## 📸 Visual Showcase & Scene Architecture
+
+| Shot 1: The Vanishing Hook | Shot 2: Gravitational Wobble | Shot 3: Supersonic Equator Spin | Shot 4: Nocturnal Void |
+|:---:|:---:|:---:|:---:|
+| <img src="docs/images/3d_moon_hook.jpg" width="100%" /> | <img src="docs/images/3d_earth_wobble.jpg" width="100%" /> | <img src="docs/images/3d_clock_spin.jpg" width="100%" /> | <img src="docs/images/3d_nocturnal_void.jpg" width="100%" /> |
+| **Hero Acting & Moon** | **Live Protractor HUD** | **Speedometer Countdown** | **Flashlight & Predator Eyes** |
+| Dual-framed waist-up character with particle shockwaves. | 3D Earth globe with live tilt angle gauge ($10^\circ \leftrightarrow 45^\circ$). | Rapid day/night strobe lighting and 24h to 6h clock transition. | Dynamic spotlight illumination with responsive cartoon pupils. |
+
+---
+
+## 🚀 Key Capabilities
 
 - **8 Studio Animation Skills**: Complete collection of prompt-driven animation skills covering 3D explainers, kinetic stick figures, Notion motion graphics, exploded views, interactive maps, and animated data visualizations.
 - **Dual-Framing 3D WebGL Engine**: Native Three.js 9:16 vertical stage with athletic character rigging, procedural facial expressions (blinks, mouth phonemes, brow tension), dynamic camera tracking, and custom GLSL shaders.
@@ -46,8 +66,7 @@ git clone https://github.com/atharvabalujadhav21052007-ux/animation-skills.git
 ### 2. Antigravity / Claude Integration
 Add the desired skill path to your AI agent configuration (e.g. `~/.gemini/config/skills` or `.claude/skills`). Each skill includes a self-contained `SKILL.md` instruction file that instructs the agent on scene design, cinematography, and animation rules.
 
-### 3. Running the 3D Reel Engine
-Render a vertical 1080x1920 3D reel:
+### 3. Rendering a Master Vertical Reel
 
 ```bash
 cd engine
@@ -62,6 +81,7 @@ python render_reel.py
 
 ```
 animation-skills/
+├── docs/images/               # Showcase frames & visual documentation
 ├── skills/
 │   ├── zach-d-films/          # 3D procedural explainer skill
 │   ├── stick-figure/          # Stick-figure animation skill
